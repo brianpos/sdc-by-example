@@ -1,6 +1,6 @@
 # Basic anatomy of a Questionnaire
 
-## Using Terminology in a Questionnaire Item
+## Using Terminology in a Questionnaire Item - Coding
 
 All aspects of this questionnaire can be found in the sample:
 [coding-sampler](https://sqlonfhir-r4.azurewebsites.net/fhir/Questionnaire/coding-sampler)
@@ -20,18 +20,22 @@ questionnaire in any other way.
 6. Contained ValueSet (no expansion) - preferred terminology server
    (https://r4.ontoserver.csiro.au/fhir/)
 7. Options from a coding expanded using a fhir query, and a fhirpath expression.
-   Useful when the expression is effected by other values on the form
 8. Languages extracted from the patient in the launch context
 9. Explicit ValueSet Reference (STU3/DSTU2 old style reference - not conformant
    with R4, but testing backward compatibility error handling)
 
-> TODO: Cleanup: There are 3 typical user interface controls that are used to
-> render terminology in a questionnaire:
->
-> - choice - a drop down list of options
-> - open-choice - a drop down list of options, with the ability to enter a
-  > custom value
-> - string - a text box
+A terminology is required with `item.type` of `choice` or `open-choice` using the [answerValueSet](https://hl7.org/fhir/R4B/questionnaire-definitions.html#Questionnaire.item.answerValueSet), [answerOption](https://hl7.org/fhir/R4B/questionnaire-definitions.html#Questionnaire.item.answerOption) or [answerExpression](http://build.fhir.org/ig/HL7/sdc/StructureDefinition-sdc-questionnaire-answerExpression.html). When including an answer in the QuestionnaireResponse, always uses the valueCoding (or valueString for `item.type` = `open-choice` selections) in the answer.
+
+There are 3 typical user interface controls that are used to render terminology in a questionnaire:
+| Type | Description | Preferred conditions |
+| - | - | - |
+| Radio Buttons | a set of radio buttons, may be vertical or horizontal | small set of values, typically < 10 |
+| Drop Down/Combobox | a list of options in a dropdown style list | medium set of values < 100 |
+| Auto-Complete | a simple textbox that you can type in which will perform a lookahead into the ValueSet to find matches on the display value | large - very large sets of values |
+
+**Note:** for the `open-choice` item.type the user interface can a little more varied:
+* some systems choose to always default this type to an autocomplete textbox where if the value is in the list, selects the code otherwise the user entered data is used (this is a great choice as user doesn't have to switch to another field if they don't find the data they are after - particularly when a large set is used)
+* others include an additional virtual option in the selection (which isn't an actual coded selection) and when selected enable/show an additional textbox to enter the data into
 
 **Note:** Each of the examples included below document the details of an item in
 the questionnaire (except where illustrates the contained resource required for
@@ -44,10 +48,13 @@ that type of item)
 This is one of the more common form of terminology usage. The codings are
 defined locally in the questionnaire, and are not expected to be available on
 any terminology server. This is a good way to include a small value set that is
-not expected to change often, and is not shared.
+not expected to change often, and is not shared (internally or externally).
 
 The codes _could_ come from a real code-system and ideally would as that would
 help with interoperability, enabling mapping to other more common code systems.
+
+This option can make working with the data entered in the form more difficult to work 
+with as other tooling will not be able to easily map the codes to other code systems.
 
 ```json
 {
@@ -155,9 +162,10 @@ a value set is preferred.
 ### 3. Canonical ValueSet Reference (no version) - not terminology server specific
 
 This is a reference to a common shared ValueSet that is expected to be available
-on any terminology server. The reference is to the canonical URL of the value
-set, and the version is not specified. The terminology server is expected to
-return the latest version of the value set.
+on any terminology server, and is expected to be the most common option used from this list.
+The reference is to the canonical URL of the value set with no version specified.
+
+It is a great choice for most situations.
 
 ```json
 {
@@ -185,13 +193,16 @@ return the latest version of the value set.
 
 ### 4. Canonical ValueSet Reference (version specific) - not terminology server specific
 
-This is similar to the previous example, but the version is specified. The
+This is similar to the previous example, but with the version is specified. The
 terminology server is expected to return the specified version of the value set.
 If the version is not available, the terminology server is expected to return an
 error.
 
 > **TODO:** Check if this error report is the expected behavior, or if it should
 > just use the current one and a warning.
+
+This option is best used where a known specific version of a ValueSet is required to be used,
+as is often found in pre-defined jurisdictional forms that change periodically.
 
 ```json
 {
@@ -215,9 +226,12 @@ error.
 },
 ```
 
+
 ---
 
 ### 5. Canonical ValueSet Reference (no version) - preferred terminology server
+
+*(More advanced functionality)*
 
 Some lists come from complex systems where only very specific servers can be
 used to provide the values. Examples of there are where they might link back to
@@ -254,7 +268,14 @@ server that has all the organizations approved content defined.
 
 ### 6. Contained ValueSet (no expansion) - preferred terminology server (https://r4.ontoserver.csiro.au/fhir/)
 
-```json
+*(More advanced functionality)*
+
+This is a reference to a ValueSet that is contained within the Questionnaire resource that does not contain the expansion and requires expansion by a terminology server to retrieve the values. 
+
+This is commonly used where the ValueSet doesn't have any value outside the questionnaire, or unable to write the ValueSet to a terminology server but still 
+requires the power of a terminology server to perform the actual processing.
+
+```jsonc
 // The questionnaire requires the ValueSet to be in the contained element with the id used in the `answerValueSet` property of the item (with the # prefix)
 "contained": [
     {
@@ -304,7 +325,14 @@ server that has all the organizations approved content defined.
 
 ---
 
-### 7. Options from a coding expanded using a fhir query, and a fhirpath expression. Useful when the expression is effected by other values on the form
+### 7. Options from a coding expanded using a fhir query, and a fhirpath expression
+
+*(More advanced functionality)*
+
+Useful when the expression is effected by other values on the form, or also retrieving other related data from the clinical record.
+This is often used in a similar way to option 8 leveraging launch context or other variables.
+
+Example showing performing a specific $expand operation against a specific server and then read the value from it.
 
 ```json
 {
@@ -337,6 +365,10 @@ server that has all the organizations approved content defined.
 ---
 
 ### 8. Languages extracted from the patient in the launch context
+
+*(More advanced functionality)*
+
+As with the previous option, uses a fhirpath expression to read the values, however in this case it is reading the values from the launch context.
 
 ```json
 {
