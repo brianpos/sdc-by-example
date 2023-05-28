@@ -5,8 +5,8 @@ This guide is not intended to re-define anything from the core specifications, o
 
 
 ## Contents
-1. The Basics - simple questionnaire structure and basics
-2. Validation - configuration of validation rules inside a questionnaire
+1. [The Basics](1.Basics/basics.md) - simple questionnaire structure and basics
+2. [Validation](2.Validation/validation.md) - configuration of validation rules inside a questionnaire
 3. Pre-population - pre-population of a questionnaire based on existing data (e.g. from a patient record)
 4. Extraction - data extraction from a questionnaire response into other clinical resources
 5. Dynamic Behaviors - dynamic behaviors of a questionnaire (e.g. branching logic, scoring, etc.)
