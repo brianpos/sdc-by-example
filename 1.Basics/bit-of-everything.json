@@ -1,0 +1,259 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "bit-of-everything",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/terminology-server",
+            "valueUrl": "https://sqlonfhir-r4.azurewebsites.net/fhir"
+        }
+    ],
+    "url": "http://demo.forms-lab.com/Questionnaire/bit-of-everything",
+    "name": "BitOfEverything",
+    "title": "Bit of everything",
+    "status": "active",
+    "date": "2021-06-14",
+    "publisher": "DEMO: Brian Postlethwaite",
+    "useContext": [
+        {
+            "code": {
+                "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+                "code": "user",
+                "display": "User Type"
+            },
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "code": "demo",
+                        "display": "Demonstration"
+                    }
+                ]
+            }
+        }
+    ],
+    "item": [
+        {
+            "linkId": "root",
+            "text": "Bit of Everything",
+            "type": "group",
+            "item": [
+                {
+                    "linkId": "Item-label",
+                    "text": "display label",
+                    "type": "display"
+                },
+                {
+                    "linkId": "Item-string",
+                    "text": "string",
+                    "type": "string"
+                },
+                {
+                    "linkId": "Item-text",
+                    "text": "text",
+                    "type": "text"
+                },
+                {
+                    "linkId": "Item-bool",
+                    "text": "boolean",
+                    "type": "boolean"
+                },
+                {
+                    "linkId": "Item-date",
+                    "text": "date",
+                    "type": "date"
+                },
+                {
+                    "linkId": "Item-datetime",
+                    "text": "datetime",
+                    "type": "dateTime"
+                },
+                {
+                    "linkId": "Item-time",
+                    "text": "time",
+                    "type": "time"
+                },
+                {
+                    "linkId": "Item-integer",
+                    "text": "integer",
+                    "type": "integer"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                            "valueCoding": {
+                                "system": "http://unitsofmeasure.org",
+                                "code": "m",
+                                "display": "meters"
+                            }
+                        }
+                    ],
+                    "linkId": "Item-decimal",
+                    "text": "decimal",
+                    "type": "decimal"
+                },
+                {
+                    "linkId": "Item-url",
+                    "text": "url",
+                    "type": "url"
+                },
+                {
+                    "linkId": "Item-reference",
+                    "text": "reference",
+                    "type": "reference"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+                            "valueCode": "image/png"
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+                            "valueCode": "image/jpeg"
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+                            "valueCode": "application/json"
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+                            "valueCode": "application/pdf"
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/maxSize",
+                            "valueDecimal": 1000000
+                        }
+                    ],
+                    "linkId": "Item-attachment",
+                    "text": "attachment",
+                    "type": "attachment"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+                            "valueCoding": {
+                                "system": "http://unitsofmeasure.org",
+                                "code": "m",
+                                "display": "meters"
+                            }
+                        },
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+                            "valueCoding": {
+                                "system": "http://unitsofmeasure.org",
+                                "code": "cm",
+                                "display": "centimeters"
+                            }
+                        }
+                    ],
+                    "linkId": "Item-quantity",
+                    "text": "quantity",
+                    "type": "quantity"
+                },
+                {
+                    "linkId": "Item-rb-local",
+                    "text": "radiobuttons (answerOptions)",
+                    "type": "choice",
+                    "repeats": false,
+                    "answerOption": [
+                        {
+                            "valueCoding": {
+                                "system": "http://example.org/coding-test",
+                                "code": "a",
+                                "display": "option A"
+                            }
+                        },
+                        {
+                            "valueCoding": {
+                                "system": "http://example.org/coding-test",
+                                "code": "b",
+                                "display": "option B"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                            "valueCodeableConcept": {
+                                "coding": [
+                                    {
+                                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                                        "code": "drop-down"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "linkId": "Item10",
+                    "text": "drop-down (answerValueSet)",
+                    "type": "choice",
+                    "repeats": false,
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                            "valueCodeableConcept": {
+                                "coding": [
+                                    {
+                                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                                        "code": "autocomplete"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "linkId": "Item11",
+                    "text": "autocomplete (admin gender)",
+                    "type": "choice",
+                    "repeats": false,
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                            "valueCodeableConcept": {
+                                "coding": [
+                                    {
+                                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                                        "code": "autocomplete"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "linkId": "Item12",
+                    "text": "open-choice (admin gender)",
+                    "type": "open-choice",
+                    "repeats": false,
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                            "valueCodeableConcept": {
+                                "coding": [
+                                    {
+                                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                                        "code": "radio-button"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "linkId": "Item-rb",
+                    "text": "radiobuttons (answerValueSet)",
+                    "type": "choice",
+                    "repeats": false,
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+                }
+            ]
+        }
+    ]
+}

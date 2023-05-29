@@ -53,7 +53,7 @@ Often will want to include which UI control is to be used with the
 extension. The
 [valueset-questionnaire-item-control](http://hl7.org/fhir/R4/valueset-questionnaire-item-control.html#expansion)
 value set defines the various options. The most common ones used in choice types
-are: radio-button, drop-down and autocomplete.
+are: `radio-button`, `drop-down` and `autocomplete`.
 
 ```json
 {
