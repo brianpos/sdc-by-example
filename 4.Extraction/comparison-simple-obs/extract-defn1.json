@@ -1,0 +1,44 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "extract-demo-defn1",
+    "url": "http://fhir.forms-lab.com/Questionnaire/extract-demo-defn1",
+    "status": "draft",
+    "title": "Sigmoidoscopy Complication",
+    "publisher": "Brian Postlethwaite",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+            "valueCode": "Observation"
+        }
+    ],
+    "item": [
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
+                    "valueBoolean": true
+                }
+            ],
+            "linkId": "code",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding",
+            "type": "choice",
+            "required": true,
+            "answerOption": [
+                {
+                    "initialSelected": true,
+                    "valueCoding": {
+                        "system": "http://example.org/sdh/demo/CodeSystem/cc-screening-codes",
+                        "code": "sigmoidoscopy-complication"
+                    }
+                }
+            ]
+        },
+        {
+            "linkId": "complication",
+            "text": "Have you had a Sigmoidoscopy Complication (concern with invasive procedure, for example)",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]",
+            "type": "boolean",
+            "required": true
+        }
+    ]
+}

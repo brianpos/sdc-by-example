@@ -1,0 +1,28 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "extract-demo-obs",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract",
+            "valueBoolean": true
+        }
+    ],
+    "url": "http://fhir.forms-lab.com/Questionnaire/extract-demo-obs",
+    "status": "draft",
+    "title": "Sigmoidoscopy Complication",
+    "publisher": "Brian Postlethwaite",
+    "item": [
+        {
+            "linkId": "complication",
+            "text": "Have you had a Sigmoidoscopy Complication (concern with invasive procedure, for example)",
+            "code": [
+                {
+                    "system": "http://example.org/sdh/demo/CodeSystem/cc-screening-codes",
+                    "code": "sigmoidoscopy-complication"
+                }
+            ],
+            "type": "boolean",
+            "required": true
+        }
+    ]
+}

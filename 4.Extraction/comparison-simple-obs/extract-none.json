@@ -1,0 +1,16 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "extract-demo-empty",
+    "url": "http://fhir.forms-lab.com/Questionnaire/extract-demo-empty",
+    "status": "draft",
+    "title": "Sigmoidoscopy Complication",
+    "publisher": "Brian Postlethwaite",
+    "item": [
+        {
+            "linkId": "complication",
+            "text": "Have you had a Sigmoidoscopy Complication (concern with invasive procedure, for example)",
+            "type": "boolean",
+            "required": true
+        }
+    ]
+}
