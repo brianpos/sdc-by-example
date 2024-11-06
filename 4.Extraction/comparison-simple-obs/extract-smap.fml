@@ -16,10 +16,14 @@ group ExtractBundle(source src : QuestionnaireResponse, target tgt : Bundle) {
 }
 
 group PopulateObservation(source src : QuestionnaireResponse, target tgt : Observation) {
+  src -> tgt.status = 'final' "SetStatus";
   src -> tgt.code = cc('http://example.org/sdh/demo/CodeSystem/cc-screening-codes', 'sigmoidoscopy-complication') "SetObservationCode";
   src.subject -> tgt.subject;
-  src.authored as s -> tgt.issued = s "SetAuthored";
+  src.authored as s -> tgt.effective = s, tgt.issued = s  "SetAuthored";
   src.author -> tgt.performer;
+  src.id as qrId -> tgt.derivedFrom as df then {
+    qrId -> df.reference = ('QuestionnaireResponse/' & %qrId) "SetReference";
+  } "SetDerivedFrom";
 
   src.item as item where (linkId = 'complication') -> tgt.value = create('CodeableConcept') as obsValue then {
         item -> tgt.value = (%item.answer.value.first()) "SetObservationValue";

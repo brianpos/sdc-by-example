@@ -34,6 +34,27 @@
             ]
         },
         {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
+                    "valueBoolean": true
+                }
+            ],
+            "linkId": "status",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status",
+            "type": "choice",
+            "required": true,
+            "answerOption": [
+                {
+                    "initialSelected": true,
+                    "valueCoding": {
+                        "system": "http://hl7.org/fhir/observation-status",
+                        "code": "final"
+                    }
+                }
+            ]
+        },
+        {
             "linkId": "complication",
             "text": "Have you had a Sigmoidoscopy Complication (concern with invasive procedure, for example)",
             "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]",

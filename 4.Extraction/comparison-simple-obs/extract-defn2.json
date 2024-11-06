@@ -18,6 +18,19 @@
                     "extension": [
                         {
                             "url": "definition",
+                            "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
+                        },
+                        {
+                            "url": "fixed-value",
+                            "valueCode": "final"
+                        }
+                    ],
+                    "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "definition",
                             "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
                         },
                         {
@@ -50,6 +63,22 @@
                     "extension": [
                         {
                             "url": "definition",
+                            "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
+                        },
+                        {
+                            "url": "expression",
+                            "valueExpression": {
+                                "language": "text/fhirpath",
+                                "expression": "(%resource.authored | %resource.meta.lastUpdated | now()).first()"
+                            }
+                        }
+                    ],
+                    "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "definition",
                             "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
                         },
                         {
@@ -73,6 +102,22 @@
                             "valueExpression": {
                                 "language": "text/fhirpath",
                                 "expression": "%resource.author"
+                            }
+                        }
+                    ],
+                    "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "definition",
+                            "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
+                        },
+                        {
+                            "url": "expression",
+                            "valueExpression": {
+                                "language": "text/fhirpath",
+                                "expression": "'QuestionnaireResponse/' + %resource.id"
                             }
                         }
                     ],

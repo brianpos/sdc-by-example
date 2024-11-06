@@ -1,13 +1,34 @@
-## Template Extract comparison - Simple Observation
+## SDC Extract comparison - Simple Observation
 Comparing the template extract approach with the other existing approaches using the same questionnaire definition.
 
 The [test questionnaire](extract-none.json) is a simple one with a single boolean question, and the extraction is to create an Observation resource with a single boolean value.
+
+```json
+{
+    "resourceType": "Questionnaire",
+    "id": "extract-demo-empty",
+    "url": "http://fhir.forms-lab.com/Questionnaire/extract-demo-empty",
+    "status": "draft",
+    "title": "Sigmoidoscopy Complication",
+    "publisher": "Brian Postlethwaite",
+    "item": [
+        {
+            "linkId": "complication",
+            "text": "Have you had a Sigmoidoscopy Complication (concern with invasive procedure, for example)",
+            "type": "boolean",
+            "required": true
+        }
+    ]
+}
+```
+> **Note:** Throughout these examples I'm going to attempt to extract the same data with minimal changes to the questionnaire definition, and only the extraction definition will change.
+> Since each are going to be compared to the observation approach I'm going to get all the approaches to generate all the data that the Observation approach would do, or note what is missing.
 
 ### Observation approach
 [extract-obs.json](extract-obs.json)
 
 The differences here are:
-```json=
+```json
     // Inclusion of the extract observation extension (to indicate to use the observation extraction approach)
     "extension": [
         {
@@ -24,7 +45,6 @@ The differences here are:
         }
     ],
 ```
-> **Note:** This approach will also populate the effectiveDateTime, derivedFrom and status properties.
 
 For this specific test case, the observation approach is by far the best and simplest one.
 (including the observation category is also supported using this approach too, however anything beyond that you'll need to adopt one of the other approaches here)
@@ -33,7 +53,7 @@ For this specific test case, the observation approach is by far the best and sim
 [extract-defn1.json](extract-defn1.json)
 
 The differences here are:
-```json=
+```json
     // inclusion of the extract context extension (to indicate the type of resource to extract)
     "extension": [
         {
@@ -47,37 +67,62 @@ The differences here are:
 
     // and hidden item(s) for other fields that need to be set in the extracted resource
     {
-    "extension": [
-        {
-            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
-            "valueBoolean": true
-        }
-    ],
-    "linkId": "code",
-    "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding",
-    "type": "choice",
-    "required": true,
-    "answerOption": [
-        {
-            "initialSelected": true,
-            "valueCoding": {
-                "system": "http://example.org/sdh/demo/CodeSystem/cc-screening-codes",
-                "code": "sigmoidoscopy-complication"
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
+                "valueBoolean": true
             }
-        }
-    ]
-},
+        ],
+        "linkId": "code",
+        "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding",
+        "type": "choice",
+        "required": true,
+        "answerOption": [
+            {
+                "initialSelected": true,
+                "valueCoding": {
+                    "system": "http://example.org/sdh/demo/CodeSystem/cc-screening-codes",
+                    "code": "sigmoidoscopy-complication"
+                }
+            }
+        ]
+    },
+    {
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
+                "valueBoolean": true
+            }
+        ],
+        "linkId": "status",
+        "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status",
+        "type": "choice",
+        "required": true,
+        "answerOption": [
+            {
+                "initialSelected": true,
+                "valueCoding": {
+                    "system": "http://hl7.org/fhir/observation-status",
+                    "code": "final"
+                }
+            }
+        ]
+    },
 ```
 
 > **Note:** This approach requires the QR to be polluted with actual data specifically for the extract (which is otherwise of no value, and would prevent being able to refine the extract definition after QR data is complete).
-> Also, this actual definition doesn't include anything to set the author, subject, issued or performed properties
+
+> **Note:** this current definition approach doesn't have an ability to set the author, subject, performed, issued, effectiveDateTime, derivedFrom or effectiveDateTime properties.
+>
+> These values are from the QR metadata, and not from the answers to the questions (that could be calculated into other answers for extraction - unless that data was entered into the resource before it was completed - of particular issue is the `qr.authored` date property).
+>
 > *(would that be special knowledge to do here, are there other resources that we would need to define that for?)*
 
 ### Definition approach 2 (new extractValue extension)
 [extract-defn1.json](extract-defn1.json)
 
 The differences here are:
-```json=
+```json
     // inclusion of the extract context extension (to indicate the type of resource to extract)
     "extension": [
         {
@@ -89,10 +134,24 @@ The differences here are:
     // and definition property(s) to indicate where to put the value(s) in that context
     "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]",
 
-    // And instead of hidden fields as in the previous example, we have a new extension to indicate where to get the value from (this is also able to retrieve the subject, author, issued and performer metadata properties)
+    // And instead of hidden fields as in the previous example, we have a new extension to indicate where to get the value from
+    // for each of the fields that need to be set in the extracted resource.
+    // (I added all the ones that would be populated from the observation approach exactly)
     "extension": [
         {
-            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue",
+            "extension": [
+                {
+                    "url": "definition",
+                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
+                },
+                {
+                    "url": "fixed-value",
+                    "valueCode": "final"
+                }
+            ],
+            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+        },
+        {
             "extension": [
                 {
                     "url": "definition",
@@ -105,7 +164,8 @@ The differences here are:
                         "code": "sigmoidoscopy-complication"
                     }
                 }
-            ]
+            ],
+            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
         },
         {
             "extension": [
@@ -123,7 +183,70 @@ The differences here are:
             ],
             "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
         },
-        ...
+        {
+            "extension": [
+                {
+                    "url": "definition",
+                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
+                },
+                {
+                    "url": "expression",
+                    "valueExpression": {
+                        "language": "text/fhirpath",
+                        "expression": "(%resource.authored | %resource.meta.lastUpdated | now()).first()"
+                    }
+                }
+            ],
+            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+        },
+        {
+            "extension": [
+                {
+                    "url": "definition",
+                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
+                },
+                {
+                    "url": "expression",
+                    "valueExpression": {
+                        "language": "text/fhirpath",
+                        "expression": "(%resource.authored | %resource.meta.lastUpdated | now()).first()"
+                    }
+                }
+            ],
+            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+        },
+        {
+            "extension": [
+                {
+                    "url": "definition",
+                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.performer"
+                },
+                {
+                    "url": "expression",
+                    "valueExpression": {
+                        "language": "text/fhirpath",
+                        "expression": "%resource.author"
+                    }
+                }
+            ],
+            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+        },
+        {
+            "extension": [
+                {
+                    "url": "definition",
+                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
+                },
+                {
+                    "url": "expression",
+                    "valueExpression": {
+                        "language": "text/fhirpath",
+                        "expression": "'QuestionnaireResponse/' + %resource.id"
+                    }
+                }
+            ],
+            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+        }
     ],
 ```
 The more properties that need to be entered into the resource that are not from answers in the question make this more verbose, but does simplify the data captured in the questionnaire (lower complexity in the capture side).
@@ -137,7 +260,7 @@ Template: Walks the QR item tree to locate template links, then walks over all t
 Observation: Looks for specific codes/extensions then generates an entire resource based on a single item (mostly - components are the exception to this)
 
 The differences here are:
-```json=
+```json
     // The extension to indicate the contained resource to use as a template
     "extension": [
         {
@@ -170,6 +293,14 @@ The differences here are:
                     }
                 ]
             },
+            "_effectiveDateTime": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.authored"
+                    }
+                ]
+            },
             "_issued": {
                 "extension": [
                     {
@@ -183,7 +314,7 @@ The differences here are:
                     "extension": [
                         {
                             "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                            "valueString": "%resource.author | %resource.subject"
+                            "valueString": "%resource.author"
                         }
                     ]
                 }
@@ -195,7 +326,19 @@ The differences here are:
                         "valueString": "%resource.item.where(linkId='complication').answer.value"
                     }
                 ]
-            }
+            },
+            "derivedFrom": [
+                {
+                    "_reference": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "valueString": "'QuestionnaireResponse/' + %resource.id"
+                        }
+                    ]
+                    }
+                }
+            ]
         }
     ],
 ```
@@ -210,7 +353,7 @@ Template: Walks the QR item tree to locate template links, then walks over all t
 Observation: Looks for specific codes/extensions then generates an entire resource based on a single item (mostly - components are the exception to this)
 
 The differences here are:
-```json=
+```json
     // inclusion of the extension to reference the StructureMap to use
     "extension": [
         {
@@ -221,7 +364,7 @@ The differences here are:
 ```
 
 And of course the actual [StructureMap definition](extract-smap.fml) too (external to the questionnaire)
-```fml=
+```fml
 map "http://fhir.forms-lab.com/StructureMap/extract-demo-smap" = "extract-demo-smap"
 
 uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
@@ -240,10 +383,14 @@ group ExtractBundle(source src : QuestionnaireResponse, target tgt : Bundle) {
 }
 
 group PopulateObservation(source src : QuestionnaireResponse, target tgt : Observation) {
+  src -> tgt.status = 'final' "SetStatus";
   src -> tgt.code = cc('http://example.org/sdh/demo/CodeSystem/cc-screening-codes', 'sigmoidoscopy-complication') "SetObservationCode";
   src.subject -> tgt.subject;
-  src.authored as s -> tgt.issued = s "SetAuthored";
+  src.authored as s -> tgt.effective = s, tgt.issued = s  "SetAuthored";
   src.author -> tgt.performer;
+  src.id as qrId -> tgt.derivedFrom as df then {
+    qrId -> df.reference = ('QuestionnaireResponse/' & %qrId) "SetReference";
+  } "SetDerivedFrom";
 
   src.item as item where (linkId = 'complication') -> tgt.value = create('CodeableConcept') as obsValue then {
         item -> tgt.value = (%item.answer.value.first()) "SetObservationValue";
