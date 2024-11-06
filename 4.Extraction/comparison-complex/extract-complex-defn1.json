@@ -1,0 +1,146 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "extract-complex-empty",
+    "url": "http://fhir.forms-lab.com/Questionnaire/extract-complex-empty",
+    "status": "draft",
+    "title": "Complex Extract Demonstration",
+    "publisher": "Brian Postlethwaite",
+    "item": [
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+                    "valueCode": "Patient"
+                }
+            ],
+            "linkId": "patient",
+            "text": "Patient Information",
+            "type": "group",
+            "item": [
+                {
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name",
+                    "linkId": "name",
+                    "text": "Name",
+                    "type": "group",
+                    "repeats": true,
+                    "item": [
+                        {
+                            "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given",
+                            "linkId": "given",
+                            "text": "Given Name(s)",
+                            "type": "string",
+                            "repeats": true
+                        },
+                        {
+                            "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family",
+                            "linkId": "family",
+                            "text": "Family/Surname",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender",
+                    "linkId": "gender",
+                    "text": "Gender",
+                    "type": "choice",
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+                },
+                {
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate",
+                    "linkId": "dob",
+                    "text": "Date of Birth",
+                    "type": "date"
+                },
+                {
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.value",
+                    "linkId": "ihi",
+                    "text": "National Identifier (IHI)",
+                    "type": "string"
+                },
+                {
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.value",
+                    "linkId": "mobile-phone",
+                    "text": "Mobile Phone number",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+                    "valueCode": "RelatedPerson"
+                }
+            ],
+            "linkId": "contacts",
+            "text": "Contacts",
+            "type": "group",
+            "repeats": true,
+            "item": [
+                {
+                    "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson.name.text",
+                    "linkId": "contact-name",
+                    "text": "Name",
+                    "type": "string"
+                },
+                {
+                    "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson.relationship",
+                    "linkId": "relationship",
+                    "text": "Relationship",
+                    "type": "choice",
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/patient-contactrelationship"
+                },
+                {
+                    "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson.telecom.value",
+                    "linkId": "phone",
+                    "text": "Phone",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "linkId": "obs",
+            "text": "Observations",
+            "type": "group",
+            "item": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+                            "valueCode": "Observation"
+                        }
+                    ],
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]",
+                    "linkId": "height",
+                    "text": "What is your current height (m)",
+                    "type": "decimal"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+                            "valueCode": "Observation"
+                        }
+                    ],
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]",
+                    "linkId": "weight",
+                    "text": "What is your current weight (kg)",
+                    "type": "decimal"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+                            "valueCode": "Observation"
+                        }
+                    ],
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]",
+                    "linkId": "complication",
+                    "text": "Have you had a Sigmoidoscopy Complication (concern with invasive procedure, for example)",
+                    "type": "boolean"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,518 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "extract-complex-template",
+    "contained": [
+        {
+            "resourceType": "Patient",
+            "id": "patTemplate",
+            "identifier": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractContext",
+                            "valueString": "item.where(linkId = 'ihi').answer.value"
+                        }
+                    ],
+                    "type": {
+                        "text": "National Identifier (IHI)"
+                    },
+                    "system": "http://example.org/nhio",
+                    "_value": {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "first()"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractContext",
+                            "valueString": "item.where(linkId = 'name')"
+                        }
+                    ],
+                    "_text": {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "item.where(linkId='given' or linkId='family').answer.value.join(' ')"
+                            }
+                        ]
+                    },
+                    "_family": {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "item.where(linkId = 'family').answer.value.first()"
+                            }
+                        ]
+                    },
+                    "_given": [
+                        {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "item.where(linkId = 'given').answer.value"
+                            }
+                        ]
+                    }
+                    ]
+                }
+            ],
+            "gender": "unknown",
+            "_gender": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "item.where(linkId = 'gender').answer.value.first().code"
+                    }
+                ]
+            },
+            "telecom": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractContext",
+                            "valueString": "item.where(linkId = 'mobile-phone').answer.value"
+                        }
+                    ],
+                    "use": "mobile",
+                    "_value": {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "first()"
+                            }
+                        ]
+                    },
+                    "system": "phone"
+                }
+            ]
+        },
+        {
+            "resourceType": "RelatedPerson",
+            "id": "rpTemplate",
+            "patient": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.subject"
+                    }
+                ]
+            },
+            "relationship": [
+                {
+                    "coding": [
+                        {
+                            "extension": [
+                                {
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "valueString": "item.where(linkId = 'relationship').answer.value.first()"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "name": [
+                {
+                    "_text": {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "item.where(linkId = 'contact-name').answer.value.first()"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "telecom": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractContext",
+                            "valueString": "item.where(linkId = 'phone').answer.value"
+                        }
+                    ],
+                    "system": "phone",
+                    "_value": {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "first()"
+                            }
+                        ]
+                    },
+                    "use": "mobile"
+                }
+            ]
+        },
+        {
+            "resourceType": "Observation",
+            "id": "obsTemplateHeight",
+            "status": "final",
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://loinc.org",
+                        "code": "8302-2",
+                        "display": "Body height"
+                    }
+                ]
+            },
+            "subject": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.subject"
+                    }
+                ]
+            },
+            "_effectiveDateTime": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.authored"
+                    }
+                ]
+            },
+            "_issued": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.authored"
+                    }
+                ]
+            },
+            "performer": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "valueString": "%resource.author | %resource.subject"
+                        }
+                    ]
+                }
+            ],
+            "_valueBoolean": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.item.where(linkId='complication').answer.value"
+                    }
+                ]
+            },
+            "derivedFrom": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractContext",
+                            "valueString": "%resource.id"
+                        }
+                    ],
+                    "_reference": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "valueString": "'QuestionnaireResponse/' + %resource.id"
+                        }
+                    ]
+                    },
+                    "reference": "replaced"
+                }
+            ]
+        },
+        {
+            "resourceType": "Observation",
+            "id": "obsTemplateWeight",
+            "status": "final",
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://loinc.org",
+                        "code": "29463-7",
+                        "display": "Weight"
+                    }
+                ]
+            },
+            "subject": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.subject"
+                    }
+                ]
+            },
+            "_effectiveDateTime": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.authored"
+                    }
+                ]
+            },
+            "_issued": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.authored"
+                    }
+                ]
+            },
+            "performer": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "valueString": "%resource.author | %resource.subject"
+                        }
+                    ]
+                }
+            ],
+            "_valueBoolean": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.item.where(linkId='complication').answer.value"
+                    }
+                ]
+            },
+            "derivedFrom": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractContext",
+                            "valueString": "%resource.id"
+                        }
+                    ],
+                    "_reference": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "valueString": "'QuestionnaireResponse/' + %resource.id"
+                        }
+                    ]
+                    },
+                    "reference": "replaced"
+                }
+            ]
+        },
+        {
+            "resourceType": "Observation",
+            "id": "obsTemplate",
+            "status": "final",
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://example.org/sdh/demo/CodeSystem/cc-screening-codes",
+                        "code": "sigmoidoscopy-complication"
+                    }
+                ]
+            },
+            "subject": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.subject"
+                    }
+                ]
+            },
+            "_effectiveDateTime": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.authored"
+                    }
+                ]
+            },
+            "_issued": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.authored"
+                    }
+                ]
+            },
+            "performer": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "valueString": "%resource.author | %resource.subject"
+                        }
+                    ]
+                }
+            ],
+            "_valueBoolean": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "valueString": "%resource.item.where(linkId='complication').answer.value"
+                    }
+                ]
+            },
+            "derivedFrom": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractContext",
+                            "valueString": "%resource.id"
+                        }
+                    ],
+                    "_reference": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "valueString": "'QuestionnaireResponse/' + %resource.id"
+                        }
+                    ]
+                    },
+                    "reference": "replaced"
+                }
+            ]
+        }
+    ],
+    "url": "http://fhir.forms-lab.com/Questionnaire/extract-complex-template",
+    "status": "draft",
+    "title": "Complex Extract Demonstration",
+    "publisher": "Brian Postlethwaite",
+    "item": [
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractToTemplate",
+                    "valueReference": {
+                        "reference": "#patTemplate"
+                    }
+                }
+            ],
+            "linkId": "patient",
+            "text": "Patient Information",
+            "type": "group",
+            "item": [
+                {
+                    "linkId": "name",
+                    "text": "Name",
+                    "type": "group",
+                    "repeats": true,
+                    "item": [
+                        {
+                            "linkId": "given",
+                            "text": "Given Name(s)",
+                            "type": "string",
+                            "repeats": true
+                        },
+                        {
+                            "linkId": "family",
+                            "text": "Family/Surname",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "linkId": "gender",
+                    "text": "Gender",
+                    "type": "choice",
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+                },
+                {
+                    "linkId": "dob",
+                    "text": "Date of Birth",
+                    "type": "date"
+                },
+                {
+                    "linkId": "ihi",
+                    "text": "National Identifier (IHI)",
+                    "type": "string"
+                },
+                {
+                    "linkId": "mobile-phone",
+                    "text": "Mobile Phone number",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractToTemplate",
+                    "valueReference": {
+                        "reference": "#rpTemplate"
+                    }
+                }
+            ],
+            "linkId": "contacts",
+            "text": "Contacts",
+            "type": "group",
+            "repeats": true,
+            "item": [
+                {
+                    "linkId": "contact-name",
+                    "text": "Name",
+                    "type": "string"
+                },
+                {
+                    "linkId": "relationship",
+                    "text": "Relationship",
+                    "type": "choice",
+                    "answerValueSet": "http://hl7.org/fhir/ValueSet/patient-contactrelationship"
+                },
+                {
+                    "linkId": "phone",
+                    "text": "Phone",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "linkId": "obs",
+            "text": "Observations",
+            "type": "group",
+            "item": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractToTemplate",
+                            "valueReference": {
+                                "reference": "#obsTemplateHeight"
+                            }
+                        }
+                    ],
+                    "linkId": "height",
+                    "text": "What is your current height (m)",
+                    "type": "decimal"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractToTemplate",
+                            "valueReference": {
+                                "reference": "#obsTemplateWeight"
+                            }
+                        }
+                    ],
+                    "linkId": "weight",
+                    "text": "What is your current weight (kg)",
+                    "type": "decimal"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractToTemplate",
+                            "valueReference": {
+                                "reference": "#obsTemplate"
+                            }
+                        }
+                    ],
+                    "linkId": "complication",
+                    "text": "Have you had a Sigmoidoscopy Complication (concern with invasive procedure, for example)",
+                    "type": "boolean"
+                }
+            ]
+        }
+    ]
+}
