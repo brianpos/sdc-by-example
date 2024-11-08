@@ -53,13 +53,13 @@
                     },
                     "_given": [
                         {
-                        "extension": [
-                            {
-                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                                "valueString": "item.where(linkId = 'given').answer.value"
-                            }
-                        ]
-                    }
+                            "extension": [
+                                {
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "valueString": "item.where(linkId = 'given').answer.value"
+                                }
+                            ]
+                        }
                     ]
                 }
             ],
@@ -198,13 +198,16 @@
                     ]
                 }
             ],
-            "_valueBoolean": {
-                "extension": [
-                    {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                        "valueString": "%resource.item.where(linkId='complication').answer.value"
-                    }
-                ]
+            "valueQuantity": {
+                "unit": "m",
+                "_value": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "valueString": "answer.value"
+                        }
+                    ]
+                }            
             },
             "derivedFrom": [
                 {
@@ -215,12 +218,12 @@
                         }
                     ],
                     "_reference": {
-                    "extension": [
-                        {
-                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                            "valueString": "'QuestionnaireResponse/' + %resource.id"
-                        }
-                    ]
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "'QuestionnaireResponse/' + %resource.id"
+                            }
+                        ]
                     },
                     "reference": "replaced"
                 }
@@ -273,13 +276,16 @@
                     ]
                 }
             ],
-            "_valueBoolean": {
-                "extension": [
-                    {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                        "valueString": "%resource.item.where(linkId='complication').answer.value"
-                    }
-                ]
+            "valueQuantity": {
+                "unit": "kg",
+                "_value": {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "valueString": "answer.value"
+                        }
+                    ]
+                }            
             },
             "derivedFrom": [
                 {
@@ -290,12 +296,12 @@
                         }
                     ],
                     "_reference": {
-                    "extension": [
-                        {
-                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                            "valueString": "'QuestionnaireResponse/' + %resource.id"
-                        }
-                    ]
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "'QuestionnaireResponse/' + %resource.id"
+                            }
+                        ]
                     },
                     "reference": "replaced"
                 }
@@ -351,7 +357,7 @@
                 "extension": [
                     {
                         "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                        "valueString": "%resource.item.where(linkId='complication').answer.value"
+                        "valueString": "answer.value"
                     }
                 ]
             },
@@ -364,12 +370,12 @@
                         }
                     ],
                     "_reference": {
-                    "extension": [
-                        {
-                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                            "valueString": "'QuestionnaireResponse/' + %resource.id"
-                        }
-                    ]
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                "valueString": "'QuestionnaireResponse/' + %resource.id"
+                            }
+                        ]
                     },
                     "reference": "replaced"
                 }

@@ -312,6 +312,19 @@
                             "extension": [
                                 {
                                     "url": "definition",
+                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.unit"
+                                },
+                                {
+                                    "url": "fixed-value",
+                                    "valueString": "m"
+                                }
+                            ],
+                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                        },
+                        {
+                            "extension": [
+                                {
+                                    "url": "definition",
                                     "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
                                 },
                                 {
@@ -325,7 +338,7 @@
                             "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
                         }
                     ],
-                    "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]",
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.value",
                     "linkId": "height",
                     "text": "What is your current height (m)",
                     "type": "decimal"
@@ -434,6 +447,19 @@
                             "extension": [
                                 {
                                     "url": "definition",
+                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.unit"
+                                },
+                                {
+                                    "url": "fixed-value",
+                                    "valueString": "kg"
+                                }
+                            ],
+                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                        },
+                        {
+                            "extension": [
+                                {
+                                    "url": "definition",
                                     "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
                                 },
                                 {
@@ -447,7 +473,7 @@
                             "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
                         }
                     ],
-                    "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]",
+                    "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.value",
                     "linkId": "weight",
                     "text": "What is your current weight (kg)",
                     "type": "decimal"
