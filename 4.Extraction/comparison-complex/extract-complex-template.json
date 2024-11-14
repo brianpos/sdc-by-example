@@ -1,6 +1,12 @@
 {
     "resourceType": "Questionnaire",
     "id": "extract-complex-template",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-allocateId",
+            "valueString": "NewPatientId"
+        }
+    ],
     "contained": [
         {
             "resourceType": "Patient",
@@ -100,7 +106,7 @@
                 "extension": [
                     {
                         "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                        "valueString": "%resource.subject"
+                        "valueString": "%NewPatientId"
                     }
                 ]
             },
@@ -168,7 +174,7 @@
                 "extension": [
                     {
                         "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                        "valueString": "%resource.subject"
+                        "valueString": "%NewPatientId"
                     }
                 ]
             },
@@ -207,7 +213,7 @@
                             "valueString": "answer.value"
                         }
                     ]
-                }            
+                }
             },
             "derivedFrom": [
                 {
@@ -246,7 +252,7 @@
                 "extension": [
                     {
                         "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                        "valueString": "%resource.subject"
+                        "valueString": "%NewPatientId"
                     }
                 ]
             },
@@ -285,7 +291,7 @@
                             "valueString": "answer.value"
                         }
                     ]
-                }            
+                }
             },
             "derivedFrom": [
                 {
@@ -323,7 +329,7 @@
                 "extension": [
                     {
                         "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                        "valueString": "%resource.subject"
+                        "valueString": "%NewPatientId"
                     }
                 ]
             },
@@ -394,6 +400,10 @@
                     "valueReference": {
                         "reference": "#patTemplate"
                     }
+                },
+                {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-allocateId",
+                    "valueString": "NewPatientId"
                 }
             ],
             "linkId": "patient",

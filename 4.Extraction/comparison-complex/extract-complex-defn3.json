@@ -1,7 +1,13 @@
 {
     "resourceType": "Questionnaire",
-    "id": "extract-complex-defn2",
-    "url": "http://fhir.forms-lab.com/Questionnaire/extract-complex-defn2",
+    "id": "extract-complex-defn3",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-allocateId",
+            "valueString": "NewPatientId"
+        }
+    ],
+    "url": "http://fhir.forms-lab.com/Questionnaire/extract-complex-defn3",
     "status": "draft",
     "title": "Complex Extract Demonstration",
     "publisher": "Brian Postlethwaite",
@@ -11,6 +17,10 @@
                 {
                     "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
                     "valueCode": "Patient"
+                },
+                {
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-allocateId",
+                    "valueString": "NewPatientId"
                 }
             ],
             "linkId": "patient",
@@ -147,6 +157,22 @@
                 {
                     "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
                     "valueCode": "RelatedPerson"
+                },
+                {
+                    "extension": [
+                        {
+                            "url": "definition",
+                            "valueCanonical": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.patient.reference"
+                        },
+                        {
+                            "url": "expression",
+                            "valueExpression": {
+                                "language": "text/fhirpath",
+                                "expression": "%NewPatientId"
+                            }
+                        }
+                    ],
+                    "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
                 }
             ],
             "linkId": "contacts",
@@ -254,7 +280,7 @@
                                     "url": "expression",
                                     "valueExpression": {
                                         "language": "text/fhirpath",
-                                        "expression": "%resource.subject"
+                                        "expression": "%NewPatientId"
                                     }
                                 }
                             ],
@@ -389,7 +415,7 @@
                                     "url": "expression",
                                     "valueExpression": {
                                         "language": "text/fhirpath",
-                                        "expression": "%resource.subject"
+                                        "expression": "%NewPatientId"
                                     }
                                 }
                             ],
@@ -523,7 +549,7 @@
                                     "url": "expression",
                                     "valueExpression": {
                                         "language": "text/fhirpath",
-                                        "expression": "%resource.subject"
+                                        "expression": "%NewPatientId"
                                     }
                                 }
                             ],
