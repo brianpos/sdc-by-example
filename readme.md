@@ -5,10 +5,10 @@ This guide is not intended to re-define anything from the core specifications, o
 
 
 ## Contents
-1. [The Basics](1.Basics/basics.md) - simple questionnaire structure and basics
+1. [The Basics](1.Basics/readme.md) - simple questionnaire structure and basics
 2. [Validation](2.Validation/validation.md) - configuration of validation rules inside a questionnaire
 3. Pre-population - pre-population of a questionnaire based on existing data (e.g. from a patient record)
-4. Extraction - data extraction from a questionnaire response into other clinical resources
+4. [Extraction](4.Extraction/readme.md) - data extraction from a questionnaire response into other clinical resources
 5. Dynamic Behaviors - dynamic behaviors of a questionnaire (e.g. branching logic, scoring, etc.)
 6. Advanced Rendering - advanced rendering including tables, images, sliders etc
 
@@ -35,6 +35,7 @@ I've also found that no one tool caters for all requirements, so you may need to
 Notable ones that I've used in the past are:
 * US NLM's [Questionnaire Builder](https://lhcformbuilder.nlm.nih.gov) - a web-based editor and renderer
 * https://lhcforms.nlm.nih.gov/lhcforms
+* https://fhirpath-lab.com/Questionnaire/tester - web based testing tool (uses the NLM and CSIRO forms engines)
 
 
 ## Contributing
