@@ -17,7 +17,7 @@
             "subject": {
                 "extension": [
                     {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                         "valueString": "%resource.subject"
                     }
                 ]
@@ -25,7 +25,7 @@
             "_effectiveDateTime": {
                 "extension": [
                     {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                         "valueString": "%resource.authored"
                     }
                 ]
@@ -33,7 +33,7 @@
             "_issued": {
                 "extension": [
                     {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                         "valueString": "%resource.authored"
                     }
                 ]
@@ -42,7 +42,7 @@
                 {
                     "extension": [
                         {
-                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                             "valueString": "%resource.author"
                         }
                     ]
@@ -51,20 +51,27 @@
             "_valueBoolean": {
                 "extension": [
                     {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                         "valueString": "%resource.item.where(linkId='complication').answer.value"
                     }
                 ]
             },
             "derivedFrom": [
                 {
-                    "_reference": {
                     "extension": [
                         {
-                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
-                            "valueString": "'QuestionnaireResponse/' + %resource.id"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractContext",
+                            "valueString": "%resource.id"
                         }
-                    ]
+                    ],
+                    "reference": "replaceme",
+                    "_reference": {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
+                                "valueString": "'QuestionnaireResponse/' + %resource.id"
+                            }
+                        ]
                     }
                 }
             ]
@@ -72,10 +79,15 @@
     ],
     "extension": [
         {
-            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractToTemplate",
-            "valueReference": {
-                "reference": "#obsTemplate"
-            }
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtract",
+            "extension": [
+                {
+                    "url": "template",
+                    "valueReference": {
+                        "reference": "#obsTemplate"
+                    }
+                }
+            ]
         }
     ],
     "url": "http://fhir.forms-lab.com/Questionnaire/extract-demo-template",

@@ -36,7 +36,7 @@
                                 "_value": {
                                     "extension": [
                                         {
-                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                             "valueString": "first()"
                                         }
                                     ]
@@ -54,7 +54,7 @@
                                 "_text": {
                                     "extension": [
                                         {
-                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                             "valueString": "item.where(linkId='given' or linkId='family').answer.value.join(' ')"
                                         }
                                     ]
@@ -62,7 +62,7 @@
                                 "_family": {
                                     "extension": [
                                         {
-                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                             "valueString": "item.where(linkId = 'family').answer.value.first()"
                                         }
                                     ]
@@ -71,7 +71,7 @@
                                     {
                                         "extension": [
                                             {
-                                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                                 "valueString": "item.where(linkId = 'given').answer.value"
                                             }
                                         ]
@@ -91,7 +91,7 @@
                                 "_value": {
                                     "extension": [
                                         {
-                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                             "valueString": "first()"
                                         }
                                     ]
@@ -103,7 +103,7 @@
                         "_gender": {
                             "extension": [
                                 {
-                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                     "valueString": "item.where(linkId = 'gender').answer.value.first().code"
                                 }
                             ]
@@ -133,7 +133,7 @@
                                     {
                                         "extension": [
                                             {
-                                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                                "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                                 "valueString": "item.where(linkId = 'relationship').answer.value.first()"
                                             }
                                         ]
@@ -146,7 +146,7 @@
                                 "_text": {
                                     "extension": [
                                         {
-                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                             "valueString": "item.where(linkId = 'contact-name').answer.value.first()"
                                         }
                                     ]
@@ -165,7 +165,7 @@
                                 "_value": {
                                     "extension": [
                                         {
-                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                             "valueString": "first()"
                                         }
                                     ]
@@ -204,7 +204,7 @@
                         "_effectiveDateTime": {
                             "extension": [
                                 {
-                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                     "valueString": "%resource.authored"
                                 }
                             ]
@@ -212,7 +212,7 @@
                         "_issued": {
                             "extension": [
                                 {
-                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                     "valueString": "%resource.authored"
                                 }
                             ]
@@ -221,7 +221,7 @@
                             {
                                 "extension": [
                                     {
-                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                         "valueString": "%resource.author"
                                     }
                                 ]
@@ -231,7 +231,7 @@
                             "_value": {
                                 "extension": [
                                     {
-                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                         "valueString": "answer.value"
                                     }
                                 ]
@@ -250,7 +250,7 @@
                                 "_reference": {
                                     "extension": [
                                         {
-                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                             "valueString": "'QuestionnaireResponse/' + %resource.id"
                                         }
                                     ]
@@ -288,7 +288,7 @@
                         "_effectiveDateTime": {
                             "extension": [
                                 {
-                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                     "valueString": "%resource.authored"
                                 }
                             ]
@@ -296,7 +296,7 @@
                         "_issued": {
                             "extension": [
                                 {
-                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                     "valueString": "%resource.authored"
                                 }
                             ]
@@ -305,7 +305,7 @@
                             {
                                 "extension": [
                                     {
-                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                         "valueString": "%resource.author"
                                     }
                                 ]
@@ -315,7 +315,7 @@
                             "_value": {
                                 "extension": [
                                     {
-                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                         "valueString": "answer.value"
                                     }
                                 ]
@@ -334,7 +334,7 @@
                                 "_reference": {
                                     "extension": [
                                         {
-                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                             "valueString": "'QuestionnaireResponse/' + %resource.id"
                                         }
                                     ]
@@ -371,7 +371,7 @@
                         "_effectiveDateTime": {
                             "extension": [
                                 {
-                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                     "valueString": "%resource.authored"
                                 }
                             ]
@@ -379,7 +379,7 @@
                         "_issued": {
                             "extension": [
                                 {
-                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                     "valueString": "%resource.authored"
                                 }
                             ]
@@ -388,7 +388,7 @@
                             {
                                 "extension": [
                                     {
-                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                         "valueString": "%resource.author"
                                     }
                                 ]
@@ -397,7 +397,7 @@
                         "_valueBoolean": {
                             "extension": [
                                 {
-                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                     "valueString": "answer.value"
                                 }
                             ]
@@ -414,7 +414,7 @@
                                 "_reference": {
                                     "extension": [
                                         {
-                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                                             "valueString": "'QuestionnaireResponse/' + %resource.id"
                                         }
                                     ]
@@ -432,7 +432,7 @@
     ],
     "extension": [
         {
-            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractToTemplate",
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractBundle",
             "valueReference": {
                 "reference": "#bunExtract"
             }

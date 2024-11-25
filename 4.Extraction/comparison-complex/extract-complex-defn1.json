@@ -79,20 +79,20 @@
             "repeats": true,
             "item": [
                 {
-                    "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson.name.text",
+                    "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.name.text",
                     "linkId": "contact-name",
                     "text": "Name",
                     "type": "string"
                 },
                 {
-                    "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson.relationship",
+                    "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.relationship.coding",
                     "linkId": "relationship",
                     "text": "Relationship",
                     "type": "choice",
                     "answerValueSet": "http://hl7.org/fhir/ValueSet/patient-contactrelationship"
                 },
                 {
-                    "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson.telecom.value",
+                    "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.telecom.value",
                     "linkId": "phone",
                     "text": "Phone",
                     "type": "string"

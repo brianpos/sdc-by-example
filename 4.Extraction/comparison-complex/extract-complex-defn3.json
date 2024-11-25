@@ -3,24 +3,30 @@
     "id": "extract-complex-defn3",
     "extension": [
         {
-            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-allocateId",
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractAllocateId",
             "valueString": "NewPatientId"
         }
     ],
-    "url": "http://fhir.forms-lab.com/Questionnaire/extract-complex-defn3",
+    "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/extract-complex-defn3",
     "status": "draft",
+    "experimental": true,
     "title": "Complex Extract Demonstration",
     "publisher": "Brian Postlethwaite",
     "item": [
         {
             "extension": [
                 {
-                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
-                    "valueCode": "Patient"
-                },
-                {
-                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-allocateId",
-                    "valueString": "NewPatientId"
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtract",
+                    "extension": [
+                        {
+                            "url": "definition",
+                            "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Patient"
+                        },
+                        {
+                            "url": "fullUrl",
+                            "valueString": "%NewPatientId"
+                        }
+                    ]
                 }
             ],
             "linkId": "patient",
@@ -33,7 +39,7 @@
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.text"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.text"
                                 },
                                 {
                                     "url": "expression",
@@ -43,7 +49,7 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         }
                     ],
                     "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name",
@@ -86,7 +92,7 @@
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.type"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.type"
                                 },
                                 {
                                     "url": "fixed-value",
@@ -95,20 +101,20 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.system"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.system"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueUri": "http://example.org/nhio"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         }
                     ],
                     "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.value",
@@ -122,27 +128,27 @@
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.use"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.use"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueCode": "phone"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.system"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.system"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueCode": "mobile"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         }
                     ],
                     "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.value",
@@ -155,14 +161,19 @@
         {
             "extension": [
                 {
-                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
-                    "valueCode": "RelatedPerson"
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtract",
+                    "extension": [
+                        {
+                            "url": "definition",
+                            "valueCanonical": "http://hl7.org/fhir/StructureDefinition/RelatedPerson"
+                        }
+                    ]
                 },
                 {
                     "extension": [
                         {
                             "url": "definition",
-                            "valueCanonical": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.patient.reference"
+                            "valueUri": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.patient.reference"
                         },
                         {
                             "url": "expression",
@@ -172,7 +183,7 @@
                             }
                         }
                     ],
-                    "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                    "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                 }
             ],
             "linkId": "contacts",
@@ -199,27 +210,27 @@
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.telecom.use"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.telecom.use"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueCode": "phone"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.telecom.system"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.telecom.system"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueCode": "mobile"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         }
                     ],
                     "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#RelatedPerson.telecom.value",
@@ -237,27 +248,32 @@
                 {
                     "extension": [
                         {
-                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
-                            "valueCode": "Observation"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtract",
+                            "extension": [
+                                {
+                                    "url": "definition",
+                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation"
+                                }
+                            ]
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueCode": "final"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
                                 },
                                 {
                                     "url": "fixed-value",
@@ -268,13 +284,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.subject"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.subject.reference"
                                 },
                                 {
                                     "url": "expression",
@@ -284,13 +300,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
                                 },
                                 {
                                     "url": "expression",
@@ -300,13 +316,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
                                 },
                                 {
                                     "url": "expression",
@@ -316,13 +332,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.performer"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.performer"
                                 },
                                 {
                                     "url": "expression",
@@ -332,26 +348,26 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.unit"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.unit"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueString": "m"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
                                 },
                                 {
                                     "url": "expression",
@@ -361,7 +377,7 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         }
                     ],
                     "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.value",
@@ -372,27 +388,32 @@
                 {
                     "extension": [
                         {
-                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
-                            "valueCode": "Observation"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtract",
+                            "extension": [
+                                {
+                                    "url": "definition",
+                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation"
+                                }
+                            ]
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueCode": "final"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
                                 },
                                 {
                                     "url": "fixed-value",
@@ -403,13 +424,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.subject"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.subject.reference"
                                 },
                                 {
                                     "url": "expression",
@@ -419,13 +440,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
                                 },
                                 {
                                     "url": "expression",
@@ -435,13 +456,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
                                 },
                                 {
                                     "url": "expression",
@@ -451,13 +472,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.performer"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.performer"
                                 },
                                 {
                                     "url": "expression",
@@ -467,26 +488,26 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.unit"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.unit"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueString": "kg"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
                                 },
                                 {
                                     "url": "expression",
@@ -496,7 +517,7 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         }
                     ],
                     "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]:valueQuantity.value",
@@ -514,20 +535,20 @@
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
                                 },
                                 {
                                     "url": "fixed-value",
                                     "valueCode": "final"
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
                                 },
                                 {
                                     "url": "fixed-value",
@@ -537,13 +558,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.subject"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.subject.reference"
                                 },
                                 {
                                     "url": "expression",
@@ -553,13 +574,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
                                 },
                                 {
                                     "url": "expression",
@@ -569,13 +590,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
                                 },
                                 {
                                     "url": "expression",
@@ -585,13 +606,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.performer"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.performer"
                                 },
                                 {
                                     "url": "expression",
@@ -601,13 +622,13 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         },
                         {
                             "extension": [
                                 {
                                     "url": "definition",
-                                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
+                                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
                                 },
                                 {
                                     "url": "expression",
@@ -617,7 +638,7 @@
                                     }
                                 }
                             ],
-                            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
                         }
                     ],
                     "definition": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]",

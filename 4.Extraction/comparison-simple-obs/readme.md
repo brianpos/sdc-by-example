@@ -142,20 +142,20 @@ The differences here are:
             "extension": [
                 {
                     "url": "definition",
-                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.status"
                 },
                 {
                     "url": "fixed-value",
                     "valueCode": "final"
                 }
             ],
-            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
         },
         {
             "extension": [
                 {
                     "url": "definition",
-                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.code.coding"
                 },
                 {
                     "url": "fixed-value",
@@ -165,13 +165,13 @@ The differences here are:
                     }
                 }
             ],
-            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
         },
         {
             "extension": [
                 {
                     "url": "definition",
-                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.subject"
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.subject"
                 },
                 {
                     "url": "expression",
@@ -181,13 +181,13 @@ The differences here are:
                     }
                 }
             ],
-            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
         },
         {
             "extension": [
                 {
                     "url": "definition",
-                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.effective"
                 },
                 {
                     "url": "expression",
@@ -197,13 +197,13 @@ The differences here are:
                     }
                 }
             ],
-            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
         },
         {
             "extension": [
                 {
                     "url": "definition",
-                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.issued"
                 },
                 {
                     "url": "expression",
@@ -213,13 +213,13 @@ The differences here are:
                     }
                 }
             ],
-            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
         },
         {
             "extension": [
                 {
                     "url": "definition",
-                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.performer"
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.performer"
                 },
                 {
                     "url": "expression",
@@ -229,13 +229,13 @@ The differences here are:
                     }
                 }
             ],
-            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
         },
         {
             "extension": [
                 {
                     "url": "definition",
-                    "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
+                    "valueUri": "http://hl7.org/fhir/StructureDefinition/Observation#Observation.derivedFrom.reference"
                 },
                 {
                     "url": "expression",
@@ -245,7 +245,7 @@ The differences here are:
                     }
                 }
             ],
-            "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
         }
     ],
 ```
@@ -264,10 +264,15 @@ The differences here are:
     // The extension to indicate the contained resource to use as a template
     "extension": [
         {
-            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractToTemplate",
-            "valueReference": {
-                "reference": "#obsTemplate"
-            }
+            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtract",
+            "extension": [
+                {
+                    "url": "template",
+                    "valueReference": {
+                        "reference": "#obsTemplate"
+                    }
+                }
+            ]
         }
     ],
 
@@ -288,7 +293,7 @@ The differences here are:
             "subject": {
                 "extension": [
                     {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                         "valueString": "%resource.subject"
                     }
                 ]
@@ -296,7 +301,7 @@ The differences here are:
             "_effectiveDateTime": {
                 "extension": [
                     {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                         "valueString": "%resource.authored"
                     }
                 ]
@@ -304,7 +309,7 @@ The differences here are:
             "_issued": {
                 "extension": [
                     {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                         "valueString": "%resource.authored"
                     }
                 ]
@@ -313,7 +318,7 @@ The differences here are:
                 {
                     "extension": [
                         {
-                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                             "valueString": "%resource.author"
                         }
                     ]
@@ -322,7 +327,7 @@ The differences here are:
             "_valueBoolean": {
                 "extension": [
                     {
-                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                         "valueString": "%resource.item.where(linkId='complication').answer.value"
                     }
                 ]
@@ -332,7 +337,7 @@ The differences here are:
                     "_reference": {
                     "extension": [
                         {
-                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractTemplateValue",
+                            "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-templateExtractValue",
                             "valueString": "'QuestionnaireResponse/' + %resource.id"
                         }
                     ]
